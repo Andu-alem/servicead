@@ -1,0 +1,61 @@
+import { useFormContext } from "react-hook-form";
+
+
+export function InputField(props) {
+    const { label, name, type } = props
+    const { register, formState: { errors } } = useFormContext()
+    
+    return (
+        <div className="my-1 md:flex">
+            <label className="text-zinc-500 font-medium my-2 md:mx-2">{ label }</label>
+            <input 
+                className="border-2 border-gray-300 focus:border-gray-100 p-1 rounded-lg w-[270px] sm:w-[300px] my-2 sm:mx-2" 
+                type={ type }
+                name={ name }
+                { ...register(name) }
+            />
+            { errors[name] && <p className="text-sm text-red-700">{ errors[name].message }</p> }
+        </div>
+    )
+}
+
+export function TextArea(props) {
+    const { label, name, type } = props
+    const { register, formState: { errors } } = useFormContext()
+    return (
+        <div className="my-1 md:flex-col">
+            <label className="text-zinc-500 font-medium my-2 mx-2">{ label }</label>
+            <textarea 
+                name={ name }
+                className="border-2 border-gray-300 w-[270px] sm:w-[400px] h-[150px] rounded-lg p-2 my-2 sm:mx-2"
+                { ...register(name) }
+            />    
+            { errors[name] && <p className="text-sm text-red-700">{ errors[name].message }</p> }
+        </div>
+    )
+}
+
+export function SelectField(props) {
+    const { label, name, type } = props
+    const { register, formState: { errors } } = useFormContext()
+    const options = ["Mechanic/Garage", "Bar and Restaurant", "Coffee House", "NGO", "Clinic", "Hospital", "Food and Drink"]
+    return (
+        <div className="my-1 md:flex">
+            <label className="text-zinc-500 font-medium my-2 sm:mx-2">{ label }</label>
+            <select
+                name={ name }
+                className="border-2 border-gray-300 focus:border-gray-100 p-1 rounded-lg w-[300px] my-2 mx-2" 
+                { ...register(name) }
+            >
+                <option valu=""></option>
+                {
+                    options.map((option, index) => {
+                        return (
+                            <option key={ index } value={`${index}`}>{ option }</option>
+                        )
+                    })
+                }
+            </select>
+        </div>
+    )
+}
