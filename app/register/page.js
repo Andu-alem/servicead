@@ -8,10 +8,6 @@ import { InputField, TextArea } from './components/Input'
 import DataList from './components/DataList'
 import { useState } from 'react'
 
-export const metadata ={
-    title: "Register service",
-    description: "Service registration page"
-}
 
 const schema = yup.object().shape({
     name: yup.string().required("Provider/Comapany name is required"),
@@ -55,7 +51,7 @@ export default function RegistrationForm() {
 
         if (res.ok) {
             await update({hasService: true})
-            router.push('/services')
+            router.push('/')
         } else {
             setSending(false)
             setSendError('Submition Faild!! please try again')

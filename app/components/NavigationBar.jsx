@@ -36,7 +36,7 @@ export default function NavigationBar() {
                     <div className="mx-1 hover:text-sky-500">
                         {
                             status === 'authenticated' ?
-                            <div onClick={ () => signOut({ callbackUrl: "/services" }) }>
+                            <div onClick={ () => signOut({ callbackUrl: "/" }) }>
                                 LogOut
                             </div> :
                             <div> 

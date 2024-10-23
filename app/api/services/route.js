@@ -3,11 +3,6 @@ import connect from '../../../lib/db-connector'
 import Service from '../../../models/Service'
 import User from '../../../models/User'
 
-export const config = {
-    api: {
-        bodyParser : false
-    }
-}
 
 export async function GET (req) {
     const { searchParams } = new URL(req.url)
