@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default function Loading() {
     return (
         <div className="mx-[20vw] mt-[35vh]">
-            <Image className="mx-[42%]" src="/logo.png" width={75} height={75} alt="logo" priority={true} />
+            <Image className="mx-[42%] md:mx-[45%]" src="/logo.png" width={75} height={75} alt="logo" priority={true} />
             <div className="flex justify-center mt-2">
                 <div className="animate-pulse mx-1 rounded-full bg-amber-500 h-4 w-4"></div>
                 <div className="animate-pulse mx-1 rounded-full bg-amber-200 h-4 w-4"></div>
