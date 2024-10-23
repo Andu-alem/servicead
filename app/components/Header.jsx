@@ -14,10 +14,10 @@ export default function NavigationBar({servicename, fromMyservice=false}) {
             <div className="block sm:flex justify-around border-b-2 border-gray-300 shadow-sm py-2 shadow-b shadow-lg">
                 <div className="flex justify-between w-full">
                     <div className="flex justify-start w-8/12">
-                        <div className="pl-2 md:pl-4 md:w-[2%]" onClick={() => router.back()}>
+                        <div className="pl-2 md:pl-4 sm:w-[7%] mx-2" onClick={() => router.back()}>
                             <ArrowLeftIcon className="w-[30px] h-[25px] sm:w-[50px] sm:h-[32px] text-zinc-700 font-bold mt-1 cursor-pointer" />
                         </div>
-                        <div className="sm:text-2xl font-bold px-4 sm:px-5 md:px-[30px]">
+                        <div className="sm:text-2xl font-bold px-4 sm:px-10 md:px-[50px]">
                             <h1 className="italic bg-gradient-to-r from-zinc-900 via-zinc-700 via-amber-500 to-amber-700 inline-block text-transparent bg-clip-text capitalize">{ servicename }</h1>
                         </div>
                     </div>
