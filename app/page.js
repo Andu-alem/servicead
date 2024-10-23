@@ -1,5 +1,4 @@
-//"use client"
-//import { useSession } from "next-auth/react"
+import { redirect } from 'next/navigation'
 import Main from './components/Main'
 import LeftSideBar from './components/LeftSideBar'
 import RightSideBar from './components/RightSideBar'
@@ -8,8 +7,12 @@ import NavigationBar from './components/NavigationBar'
 
 
 export default async function Services() {
-    const data = await fetch('http://localhost:3000/api/services', {cache: 'no-store'})
+    const data = await fetch(`${process.env.URL}/api/services`, {cache: 'no-store'})
     const serviceData = await data.json()
+    
+    if (!serviceData) {
+        redirect("/auth/signup")
+    }
     const { catagories, services } = serviceData
     
     return (
