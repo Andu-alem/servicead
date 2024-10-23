@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 
 export default function Card({ service }) {
-    const { image, servicename, catagory, _id } = service
+    const { image, focusarea, servicename, catagory, _id } = service
     const { type, data } = image
     const base64String = btoa( new Uint8Array(data.data).reduce((chunk, byte) => chunk + String.fromCharCode(byte), ''))
     
@@ -14,9 +14,10 @@ export default function Card({ service }) {
                 <div className="absolute w-[96%] h-[150px] mx-[4px]">
                     <Image className="mx-auto" fill={true} src={`data:${type};base64,${base64String}`} alt="profile-pic"/>
                 </div>
-                <div className="text-gray-700 mt-[160px] px-3">
-                    <p>
-                        <span className="text-green-500 font-bold">&gt;</span>
+                <div className="text-zinc-500 mt-[160px] px-3">
+                    <p className="font-mono mx-1 p-1">{focusarea}</p>
+                    <p className="font-medium">
+                        <span className="text-amer-500 font-bold">&gt;</span>
                         300 meters away from you
                     </p>
                 </div>
