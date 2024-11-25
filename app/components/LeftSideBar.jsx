@@ -5,20 +5,44 @@ import CatagoryModal from './CatagoryModal'
 import { useState } from 'react';
 
 
-export default function LeftSideBar({catagories}) {
-    const [open, setOpen] = useState(false)
+export default function LeftSideBar({ catagories, filterService }) {
+    const [open, setOpen] = useState(false);
+    const [searchBy, setSearchBy] = useState("name");
+    const changeHandler = (e) => {
+        setSearchBy(e.target.value);
+    }
+    const inputChange = (e) => {
+        filterService(searchBy, e.target.value.trim());
+    }
+    const handleClick = (e) => {
+        filterService('category', e.target.innerHTML.trim());
+    }
+
     return (
-        <div className="fixed text-wrap w-full bottom-0 md:top-20 bg-gray-200 md:bg-transparent md:w-2/12 z-50">
+        <div className="fixed text-wrap w-full text-[15px] bottom-0 md:top-20 bg-gray-200 md:bg-transparent md:w-2/12 z-50">
             <div className="flex md:block">
-                <div className="text-lg hidden md:block font-medium text-zinc-700 mb-2">Find services</div>
-                <div className="my-2 md:my-1 mx-1 md:mx-1 text-zinc-500">
-                    <input className="border border-sky-500 rounded-lg px-3 w-[40vw] md:w-[70%]" placeholder="Search" />
+                <div className="text-sm hidden md:block font-medium text-zinc-700 mb-2">Find services</div>
+                <div className="my-2 md:my-1 mx-1 md:mx-1 text-zinc-500 flex md:block">
+                    <div className="my-1 flex flex-col w-[20vw] md:block"> 
+                        <label htmlFor="selection" className="hidden md:block">Search By - </label>
+                        <select id="selection" className="border border-zinc-200 md:my-1 focus:border-0" onChange={ changeHandler } >
+                            <option value="name">Name</option>
+                            <option value="city">City</option>
+                            <option value="category">Category</option>
+                        </select>
+                    </div>
+                    <input 
+                        type="search"
+                        className="border border-sky-500 focus:border-0 rounded-lg px-3 py-1 w-[35vw] md:w-[70%]" 
+                        placeholder="Search"
+                        onChange={ inputChange }
+                    />
                 </div>
                 <div className="text-zinc-700 font-medium mx-1">
                     <h3 className="hidden md:block">By radius</h3>
                     <input 
                         type="number" 
-                        className="border border-sky-500 my-2 md:my-0 md:mt-2 rounded-lg pl-2 md:pl-4 w-[40vw] md:w-[50%]"
+                        className="border border-sky-500 my-2 md:my-0 md:mt-2 rounded-lg pl-2 md:pl-4 w-[20vw] md:w-[50%]"
                         placeholder="2Km"/>
                 </div>
                 <div className="block md:hidden my-2">
@@ -32,15 +56,22 @@ export default function LeftSideBar({catagories}) {
                         {
                             catagories.map((item, index) => {
                                 return (
-                                    <p className="capitalize hover:bg-zinc-100 cursor-default" key={ index }>{ item }</p>
+                                    <p 
+                                        className="capitalize hover:bg-zinc-100 cursor-default" 
+                                        key={ index }
+                                        onClick={ handleClick }
+                                    >{ item }</p>
                                 )
                             })
                         }
                     </div>
                 </div>
             </div>
-            <div className={open ? "block": "hidden"}>
-                    <CatagoryModal catagories={ catagories } />
+            <div className={open ? "block md:hidden": "hidden"}>
+                    <CatagoryModal 
+                        catagories={ catagories } 
+                        filterService={ filterService }
+                    />
             </div>
         </div>
     )

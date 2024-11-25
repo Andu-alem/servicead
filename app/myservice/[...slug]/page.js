@@ -1,5 +1,5 @@
 import { getServerSession } from 'next-auth';
-import MyService from './components/ServiceBody';
+import MyService from '../components/ServiceBody';
 
 
 const getData = async (email) => {
@@ -22,7 +22,7 @@ export default async function Page() {
     const services = await getData(email)
     return (
         <div className="min-h-screen">
-            <MyService service={ services } />
+            <MyService service={ services } afterRegistration={ true } />
         </div>       
     )
 }

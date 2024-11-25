@@ -9,7 +9,7 @@ export const metadata = {
     return (
       <main className="min-h-screen">
           <Header />
-          <div className="py-12">
+          <div className="py-2">
               { children }
           </div>
       </main>

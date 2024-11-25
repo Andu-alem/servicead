@@ -51,7 +51,7 @@ export default function RegistrationForm() {
 
         if (res.ok) {
             await update({hasService: true})
-            router.push('/')
+            router.push('/myservice/edit')
         } else {
             setSending(false)
             setSendError('Submition Faild!! please try again')
