@@ -1,33 +1,21 @@
-import { NextResponse } from 'next/server'
-import connect from '../../../lib/db-connector'
-import Service from '../../../models/Service'
-import User from '../../../models/User'
+import { NextResponse } from 'next/server';
+import connect from '../../../lib/db-connector';
+import Service from '../../../models/Service';
+import User from '../../../models/User';
+import Category from '../../../models/Category';
+import ServiceType from '../../../models/ServiceType';
+import Image from '../../../models/Image';
 
 
 export async function GET (req) {
     const { searchParams } = new URL(req.url)
     try {
         await connect()
-        const services = await Service.find()
-
-        let catagories = []
-        let data = {}
-
-        for(let service of services) {
-            let cat = service.catagory.toLowerCase()
-            if (catagories.indexOf(cat) === -1) {
-                catagories.push(cat)
-            }
-            data = {
-                ...data,
-                [cat] : data[cat] !== undefined ? [...data[cat], service]:[service]
-            }
-        }
-
+        //const services = await Service.find
+        const categories = await Category.find().populate('services');
 
         return NextResponse.json({
-            catagories,
-            services: data
+            categories,
         }) 
     } catch (error) {
         
@@ -41,38 +29,48 @@ export async function POST (req) {
         await connect()
         const formData = await req.formData()
         const {
-            name,
-            catagory,
-            focusarea,
+            serviceName,
+            category,
+            serviceType,
             description,
             city,
             uniqueaddress,
-            image,
+            profilePic,
             email
         } = Object.fromEntries(formData)
-        const imageType = image.type
-        const buffer = Buffer.from(await image.arrayBuffer(), "base64")
+        const mimeType = profilePic.type
+        const buffer = Buffer.from(await profilePic.arrayBuffer(), "base64")
         const user = await User.findOne({email: email})
         if (user.hasService) {
             throw Error("Service already registerd")
         }
-        const newService = await new Service({
+        const image = await Image.create({
+            mimeType,
+            data: buffer
+        });
+        const insertedCategory = await Category.create({
+            name: category.trim(),
+        });
+
+        const sType = await ServiceType.create({
+            name: serviceType.trim()
+        });
+
+        const service = await Service.create({
             user: user._id,
-            servicename: name,
-            catagory,
-            focusarea,
+            serviceName,
+            category: insertedCategory._id,
+            serviceType: sType._id,
             description,
             address: {
-                city,
-                uniqueaddress
+                city: city.trim(),
+                uniqueaddress: uniqueaddress.trim()
             },
-            image: {
-                imageType,
-                data: buffer
-            }
-        })
-        const service = await newService.save()
-        await User.updateOne({email: email}, {$set:{ hasService: true }})
+            profileImage: image._id
+        });
+
+        await User.updateOne({email: email}, {$set:{ hasService: true }});
+        await Image.updateOne({_id: image._id}, {$set:{ service: service._id }});
         
         return NextResponse.json({ message: 'Registeration success', service })
     } catch(error) {

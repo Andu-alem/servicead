@@ -1,12 +1,12 @@
 import { getServerSession } from 'next-auth';
-import MyService from '../components/ServiceBody';
+import MyServiceMain from '../../components/ServicePage/MyServiceMain';
 
 
 const getData = async (email) => {
     const serviceData = await fetch(`${process.env.URL}/api/services/myservice-${email}`, {cache: 'no-store'})
-    const { services } = await serviceData.json()
+    const { service } = await serviceData.json()
 
-    return services
+    return service
 }
 
 export default async function Page() {
@@ -19,10 +19,10 @@ export default async function Page() {
         )
     }
     const email = user.email
-    const services = await getData(email)
+    const service = await getData(email)
     return (
         <div className="min-h-screen">
-            <MyService service={ services } afterRegistration={ true } />
+            <MyServiceMain service={ service } afterRegistration={ true } />
         </div>       
     )
 }

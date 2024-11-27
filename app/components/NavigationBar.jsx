@@ -16,7 +16,9 @@ export default function NavigationBar() {
                 <div className="flex justify-between w-full">
                         <div className="flex flex-row text-sm font-bold w-[11/12] sm:w-3/4 px-7 md:px-[50px]">
                             <Image src="/logo.png" width={50} height={50} alt="logo" />
-                            <h1 className="bg-gradient-to-r mt-4 from-sky-700 via-sky-300 to-sky-100 inline-block text-transparent bg-clip-text underline">Service<span className="text-zinc-500">Ad</span> </h1>
+                            <h1 className="bg-gradient-to-r mt-4 from-sky-700 via-sky-300 to-sky-100 inline-block text-transparent bg-clip-text underline">
+                                Service<span className="text-zinc-500">Ad</span> 
+                            </h1>
                         </div>
                         <div className="w-[1/12] sm:hidden hover:text-red-400 mt-[7px]">
                             <Bar3BottomRightIcon className="w-[50px] h-[40px] mr-1 text-zinc-500 font-bold cursor-pointer hover:text-sky-700" onClick={()=> setMenuToggle(!menuToggle)} />
@@ -37,7 +39,7 @@ export default function NavigationBar() {
                         {
                             status === 'authenticated' ?
                             <div onClick={ () => signOut({ callbackUrl: "/" }) }>
-                                Log-out
+                                LogOut
                             </div> :
                             <div> 
                                 <Link href="/auth/login">LogIn</Link>

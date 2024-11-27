@@ -1,57 +1,50 @@
 'use client'
+import { useState } from 'react';
 import ServicesList from './ServicesList'
 import LeftSideBar from './LeftSideBar'
 import RightSideBar from './RightSideBar'
-import { useState } from 'react';
 
-export default function MainBody({ servicesData }) {
-    const { services, catagories } = servicesData;
-    const [allServices, setAllServices] = useState(services);
-    const [allCatagories, setAllCatagories] = useState(catagories);
+export default function MainBody({ categories }) {
+    const [allCategories, setAllCategories] = useState(categories);
 
 
     const filterService = (filterBy, filterParam) => {
         if (filterBy === 'category') {
-            let filterdCat = [];
-            filterdCat = catagories.filter((catagory, index) => {
-                const cat = catagory.toLowerCase().trim();
+            let filterdCategory = [];
+            filterdCategory = categories.filter((category, index) => {
+                const cat = category.name.toLowerCase().trim();
                 return cat.indexOf(filterParam.toLowerCase()) !== -1;
             });
-            setAllCatagories(filterdCat);
+            setAllCatagories(filterdCategory);
         } else { // if filter by name or city selected
-            let filterdCatagorizedServices = {}
-            let filterdCatagories = []
-            for (const catagory in services) {
-                if (services.hasOwnProperty(catagory)) {
-                    const servicesArray = services[catagory];
-                    const filterd = servicesArray.filter((service) => {
-                        if (filterBy == 'name') {
-                            const name = service.servicename.toLowerCase();
-                            return name.indexOf(filterParam.toLowerCase()) !== -1;
-                        }
-                        const city = service.address.city.toLowerCase();
-                        return city.indexOf(filterParam.toLowerCase()) !== -1;
-                    });
-
-                    if (filterd.length > 0) {
-                        filterdCatagorizedServices[catagory] = filterd;
-                        filterdCatagories.push(catagory);
+            let filterdCategories = [];//to clreate a new categories list based on filterd service
+            for (let i = 0; i < categories.length; i++) {
+                const category = categories[i];
+                const filterdService = category.services.filter((service, index) => {
+                    if (filterBy == 'name') {
+                        const name = service.serviceName.toLowerCase();
+                        return name.indexOf(filterParam.toLowerCase()) !== -1;
                     }
-                    
+                    const city = service.address.city.toLowerCase();
+                    return city.indexOf(filterParam.toLowerCase()) !== -1;
+                });
+                if (filterdService.length > 0) {
+                    //updates the category object with filted services
+                    category.services = filterdService;
+                    filterdCategories.push(category);
                 }
             }
-            setAllCatagories(filterdCatagories);
-            setAllServices(filterdCatagorizedServices);
+            setAllCategories(filterdCategories);
         }
     }
 
     return (
         <div className="w-[96%] mx-auto mt-[70px] md:flex md:justify-evenly">
-            <div className="md:w-2/12">
-                <LeftSideBar filterService={ filterService } catagories={ catagories } />
+            <div className="sm:w-4/12 md:w-2/12">
+                <LeftSideBar filterService={ filterService } categories={ categories } />
             </div>
-            <div className="sm:w-10/12 md:w-8/12 mx-auto">
-                <ServicesList catagories={ allCatagories } services={ allServices } />
+            <div className="sm:w-8/12 md:w-8/12 mx-auto">
+                <ServicesList categories={ allCategories } />
             </div>
             <div className="w-2/12">
                 <RightSideBar />

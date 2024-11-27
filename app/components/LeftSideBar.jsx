@@ -1,11 +1,11 @@
 "use client"
-import Link from 'next/link'
-import ChevronDoubleUpIcon from '@heroicons/react/24/solid/ChevronDoubleUpIcon'
-import CatagoryModal from './CatagoryModal'
+
 import { useState } from 'react';
+import ChevronDoubleUpIcon from '@heroicons/react/24/solid/ChevronDoubleUpIcon';
+import CatagoryModal from './CatagoryModal';
 
 
-export default function LeftSideBar({ catagories, filterService }) {
+export default function LeftSideBar({ categories, filterService }) {
     const [open, setOpen] = useState(false);
     const [searchBy, setSearchBy] = useState("name");
     const changeHandler = (e) => {
@@ -51,16 +51,16 @@ export default function LeftSideBar({ catagories, filterService }) {
                         onClick={ () => setOpen(!open) }/>
                 </div>
                 <div className="hidden md:block mt-3">
-                    <h3 className="text-zinc-700 font-medium">By catagory</h3>
+                    <h3 className="text-zinc-700 font-medium">By category</h3>
                     <div className="m-1 hidden md:block h-[40vh] text-zinc-500 overflow-auto scrollbar-hide">
                         {
-                            catagories.map((item, index) => {
+                            categories.map((category, index) => {
                                 return (
                                     <p 
                                         className="capitalize hover:bg-zinc-100 cursor-default" 
                                         key={ index }
                                         onClick={ handleClick }
-                                    >{ item }</p>
+                                    >{ category.name }</p>
                                 )
                             })
                         }
@@ -69,7 +69,7 @@ export default function LeftSideBar({ catagories, filterService }) {
             </div>
             <div className={open ? "block md:hidden": "hidden"}>
                     <CatagoryModal 
-                        catagories={ catagories } 
+                        categories={ categories } 
                         filterService={ filterService }
                     />
             </div>

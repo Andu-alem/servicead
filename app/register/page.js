@@ -4,19 +4,19 @@ import { useForm, FormProvider } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import { InputField, TextArea } from './components/Input'
+import { InputField, TextArea, SelectField } from './components/Input'
 import DataList from './components/DataList'
 import { useState } from 'react'
 
 
 const schema = yup.object().shape({
-    name: yup.string().required("Provider/Comapany name is required"),
-    focusarea: yup.string().required("Please enter the area your service focuses on"),
+    serviceName: yup.string().required("Provider/Comapany name is required"),
+    serviceType: yup.string().required("Please enter the area your service focuses on"),
     city: yup.string().required("City is required"),
     uniqueaddress: yup.string().required("Please provide your unique address/sefer name"),
     description: yup.string().required("Write a description about your service"),
-    catagory: yup.string().required("Catagory is required"),
-    image: yup
+    category: yup.string().required("Category is required"),
+    profilePic: yup
         .mixed()
         .required("Please upload profile pic")
         .test('fileSize','Image size must be < 1mb', file => file[0].size <= 1024 * 1024)
@@ -41,9 +41,9 @@ export default function RegistrationForm() {
         }
         let formData = new FormData()
         for (let key in inputData) {
-            formData.append(key, key === 'image' ? inputData[key][0]:inputData[key])
+            formData.append(key, key === 'profilePic' ? inputData[key][0]:inputData[key])
         }
-        formData.append('email', userEmail) 
+        formData.append('email', userEmail)
         const res = await fetch('/api/services', {
             method: 'POST',
             body: formData
@@ -59,20 +59,20 @@ export default function RegistrationForm() {
     }
     return (
         <FormProvider { ...methods }>
-            <div className="mt-3 sm:mt-2 mx-[7%] md:mx-[15%] lg:mx-[20%]">
-                <h1 className="text-zinc-700 font-medium">Fill out the form below to register your service to the system</h1>
+            <div className="mt-3">
+                <h1 className="text-zinc-700 text-sm font-medium">Fill out the form below to register your service to the system</h1>
             </div>
-            <div className="mt-2 sm:mt-4 mx-[2%] sm:mx-[10%] md:mx-[15%] lg:mx-[20%] mb-5 px-[5%] sm:px-[3%] md:px-[5%] lg:[12%] py-4 sm:py-7 border border-gray-100 shadow-md shadow-gray-200">
+            <div className="mt-2 sm:mt-4 mb-5 flex justify-center w-11/12 sm:w-9/12 md:w-7/12 lg:w-5/12 px-[2%] py-4 sm:py-7 border border-gray-300 bg-gray-50 shadow-md shadow-gray-200">
                 <form onSubmit={ methods.handleSubmit(submitHandler) }>
-                    <DataList label="What is your service catagory" name="catagory" />
-                    <InputField label="Business Name" type="text" name="name" />
-                    <InputField label="What is your focus area" type="text" name="focusarea" />
+                    <InputField label="Business Name" type="text" name="serviceName" />
+                    <DataList label="Your service category" name="category" />
+                    <SelectField label="Service/Business type" type="text" name="serviceType" />
                     <InputField label="Address - City" type="text" name="city" />
                     <InputField label="Address unique name/sefer" type="text" name="uniqueaddress" />
-                    <TextArea label="Brief description of your offering" type="textarea" name="description" />
-                    <InputField label="Upload Profilpic" type="file" name="image" />
-                    <div className="mx-[30%] flex justify-around">
-                        <button className="flex text-sm text-green-500 outline outline-green-500 rounded-lg py-1 px-2 hover:bg-green-500 hover:text-white" disabled={sending}>
+                    <TextArea label="Write a detailed description about your service" type="textarea" name="description" />
+                    <InputField label="Profile picture or Logo for your service" type="file" name="profilePic" />
+                    <div className="flex justify-center">
+                        <button className="flex text-sm text-white bg-zinc-700 rounded-lg py-1 px-2 hover:opacity-75 hover:text-white" disabled={sending}>
                             <div className={`${sending ? 'block':'hidden'} animate-spin mt-[3px] mx-1 border-gray-300 bg-white h-[10px] w-[10px] rounded-full border-4 border-t-sky-500 p-[5px]`}></div>
                             Submit
                         </button>

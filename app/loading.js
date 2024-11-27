@@ -2,14 +2,16 @@ import Image from 'next/image';
 
 export default function Loading() {
     return (
-        <div className="mx-[20vw] pt-[35vh] min-h-[100vh]">
-            <Image className="mx-[42%] md:mx-[45%]" src="/logo.png" width={75} height={75} alt="logo" priority={true} />
+        <div className="flex flex-col justify-center items-center min-h-[100vh] bg-gradient-to-b from-sky-300 via-gray-200 via-gray-300">
+            <Image className="" src="/logo.png" width={120} height={120} alt="logo" priority={true} />
             <div className="flex justify-center mt-2">
-                <div className="animate-pulse mx-1 rounded-full bg-amber-500 h-4 w-4"></div>
-                <div className="animate-pulse mx-1 rounded-full bg-amber-200 h-4 w-4"></div>
-                <div className="animate-pulse mx-1 rounded-full bg-amber-400 h-4 w-4"></div>
+                <div className="animate-pulse mx-1 rounded-full bg-rose-500 h-3 w-3"></div>
+                <div className="animate-pulse mx-1 rounded-full bg-red-400 h-3 w-3"></div>
+                <div className="animate-pulse mx-1 rounded-full bg-blue-300 h-3 w-3"></div>
+                <div className="animate-pulse mx-1 rounded-full bg-red-400 h-3 w-3"></div>
+                <div className="animate-pulse mx-1 rounded-full bg-rose-500 h-3 w-3"></div>
             </div>
-            <h2 className="text-center text-sky-500 mt-2 text-lg font-bold">Loading</h2>
+            <span className="text-center text-zinc-700 mt-2 text-xl font-bold">Loading</span>
         </div>
     )
 }

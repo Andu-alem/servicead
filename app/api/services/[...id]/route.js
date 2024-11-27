@@ -19,10 +19,10 @@ export async function GET (req) {
             user_id = user._id
         }
         const searchParam = email === undefined ? { _id: id } : { user: user_id }
-        const services = await Service.findOne(searchParam)
+        const service = await Service.findOne(searchParam).populate('category').populate('profileImage').populate('images')
 
         return NextResponse.json({
-            services
+            service
         }) 
     } catch (error) {
         

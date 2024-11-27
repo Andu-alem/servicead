@@ -3,19 +3,11 @@ import mongoose from 'mongoose'
 const ServiceSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Users",
+        ref: "User",
         required: true,
         unique: true,
     },
-    servicename: {
-        type: String,
-        required: true
-    },
-    catagory: {
-        type: String,
-        required: true
-    },
-    focusarea: {
+    serviceName: {
         type: String,
         required: true
     },
@@ -30,24 +22,53 @@ const ServiceSchema = new mongoose.Schema({
         },
         uniqueaddress: {
             type: String,
-            reqired: true
+            required: true
+        },
+        geoLocation: {
+            type: String,
+            required: false
         }
     },
-    post: [{
+    category: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Posts",
-        required: false
+        ref: 'Category',
+    },
+    serviceType: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "ServiceType",
+    },
+    productsAndServices: [{
+        title: String,
+        description: String
     }],
-    image: {
-        imageType: {
-            type: String,
-            required: true
-        },
-        data: {
-            type: Buffer,
-            required: true
-        },
+    offering: String,
+    profileImage: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Image',
     }
+},{
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
 })
+
+ServiceSchema.virtual('images', {
+    ref: 'Image',
+    localField: '_id',
+    foreignField: 'service'
+});
+
+ServiceSchema.virtual('reviews', {
+    ref: 'Review',
+    localField: '_id',
+    foreignField: 'services'
+});
+
+ServiceSchema.pre('find', function(next) {
+    this.populate({
+        path: 'category serviceType profileImage',
+        options: { _recursed: true }
+    });
+    next();
+});
 
 export default mongoose.models.Service || mongoose.model('Service', ServiceSchema)

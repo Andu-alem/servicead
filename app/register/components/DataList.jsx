@@ -22,8 +22,9 @@ export default function DataList(props) {
     const selectHandler = (e, option) => {
         //const { key } = e.target
         setInputValue(option)
-        register(name).onChange(e)
         setShow(false)
+        e.target.value = option
+        register(name).onChange(e)
     }
     const List = () => {
         return (
@@ -32,7 +33,7 @@ export default function DataList(props) {
                     options.map((option, index) => {
                         return (
                             <div key={ index } className="cursor-pointer hover:bg-zinc-100" onClick={ (e) => selectHandler(e, option) }>
-                                <li className="m-1">{ option }</li>
+                                <li className="m-1 text-sm">{ option }</li>
                             </div>
                         )
                     })
@@ -41,11 +42,11 @@ export default function DataList(props) {
         )
     }
     return (
-        <div className="my-1 md:flex">
-            <label className="text-zinc-500 font-medium my-2 sm:mx-2">{ label }</label>
+        <div className="my-1 flex flex-col text-sm">
+            <label className="text-zinc-700 font-medium">{ label }</label>
             <input 
                 type="text" 
-                className="border-2 border-gray-300 focus:border-gray-100 p-1 rounded-lg w-[270px] sm:w-[300px] my-2 sm:mx-2"
+                className="border-2 border-gray-300 focus:border-gray-100 p-1 rounded-lg w-[270px] sm:w-[300px] my-1 sm:mx-2"
                 name={ name }
                 { ...register(name) }
                 onChange={ changeHandler }

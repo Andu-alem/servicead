@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
   return (
     <main className="min-h-screen">
         <Header />
-        <div className="py-12">
+        <div className="py-12 flex flex-col items-center">
             { children }
         </div>
     </main>

@@ -23,13 +23,13 @@ export default function ProductAndService ({ index , editMode=false, setProductA
     }
 
     return (
-        <div className="p-2 text-center w-full sm:w-[33%] md:w-1/4">
+        <div className="p-2 text-center text-[15px] w-full sm:w-[30%] lg:w-1/4">
             {
                 editMode ?
                     ( 
                         <>
                             <textarea 
-                                className="text-lg mb-2 font-medium resize-none border-0 p-0 text-center bg-blue-100"
+                                className="text-lg mb-2 font-medium resize-none border border-slate-300 p-0 text-center bg-blue-100"
                                 placeholder="Title...."
                                 cols="17"
                                 rows="2"
@@ -37,7 +37,7 @@ export default function ProductAndService ({ index , editMode=false, setProductA
                                 onChange={ titleChange }
                             />
                             <textarea
-                                className="-mt-2 border-0 text-center bg-blue-100 resize-none text-sm text-zinc-700"
+                                className="-mt-2 border boreder-slate-300 text-center bg-blue-100 resize-none text-sm text-zinc-700"
                                 rows="10"
                                 cols="25"
                                 resizable="false"
@@ -49,7 +49,7 @@ export default function ProductAndService ({ index , editMode=false, setProductA
                     ) : (
                         <>
                             <h3 className="text-lg mb-2 font-medium">Some Title</h3>
-                            <p className="text-sm text-zinc-700">
+                            <p className="text-zinc-700">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro facere eaque maiores, sint perspiciatis, blanditiis nihil voluptate? Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro facere eaque maiores, sint perspiciatis, blanditiis nihil voluptate?
                             </p>
                         </>

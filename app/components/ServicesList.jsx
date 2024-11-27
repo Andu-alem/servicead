@@ -11,7 +11,7 @@ const CardContainer = ({ services }) => {
                 //loop through services[]
                 services.map((service, index) => {
                     return (
-                        <Card key={index} service={service} />
+                        <Card key={ index } service={ service } />
                     )
                 })
             }
@@ -20,21 +20,21 @@ const CardContainer = ({ services }) => {
     )
 }
 
-export default function ServicesList({ catagories, services }) {
+export default function ServicesList({ categories }) {
     return (
         <div className="mb-12">
             {
-                catagories.length < 1 ?
+                categories.length < 1 ?
                 (
                     <h2 className="text-lg text-zinc-500 text-center pt-10">No Service Found</h2>
                 ) :
-                catagories.map((cat, index) => {
+                categories.map((category, index) => {
                     return (
                         <div key={index}>
                             <div className="border-b border-gray-100 py-1 px-1 sm:px-7">
-                                <h2 className="font-bold text-[17px] text-gray-500 capitalize">{`${cat}s`}</h2>
+                                <h2 className="font-bold text-[17px] text-gray-500 capitalize">{`${category.name}s`}</h2>
                             </div>
-                            <CardContainer services={services[cat]} />
+                            <CardContainer services={ category.services } />
                         </div>
                     )
                 })

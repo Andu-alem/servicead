@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Error({ error, reset }) {
     return (
-        <div className="text-center mt-[30vh]">
+        <div className="text-center flex flex-col items-center justify-center min-h-[100vh] bg-gradient-zinc-500 via-gray-200 via-gray-100 to-blue-100">
             <h2 className="text-3xl text-stone-700 font-bold my-2">Oops!</h2>
             <h2 className="text-xl text-zinc-500 font-bold">Something went wrong!</h2>
             <div className="flex mt-5 justify-center">
