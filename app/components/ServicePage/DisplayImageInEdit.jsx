@@ -33,7 +33,7 @@ export default function DisplayImageInEdit({ images=[], src}) {
         }
 
         setImageSources(sources);
-    },[uploadedImages, deletedImages]);
+    },[uploadedImages, deletedImages, images]);
 
     return (
         <>

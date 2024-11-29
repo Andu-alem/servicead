@@ -8,7 +8,7 @@ export default function Rating({ rate=null }) {
     useEffect(() => {
         let rating = rate || Math.ceil((Math.random() * 4)+1);//set random rating out of 5 if rate is not proviced
         setRate(rating);
-    },[])
+    },[rate])
     return (
         <div className="flex">
             {

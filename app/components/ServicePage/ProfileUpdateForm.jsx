@@ -32,7 +32,6 @@ const schema = yup.object().shape({
 })
 
 export default function ProfileUpdateModal({ serviceData=null, show=false }) {
-    if(!serviceData) return;
     const { data, status, update } = useSession();
     const [sending, setSending] = useState(false);
     const [sendError, setSendError] = useState('')

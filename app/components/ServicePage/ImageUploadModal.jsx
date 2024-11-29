@@ -15,7 +15,7 @@ export default function ImageUploadModal ({ showModal, setShowModal, fetchedImag
             const images = Array.from(fetchedImages);
             setImageSources(images);
         }
-    },[]);
+    },[fetchedImages]);
     
     const handleChange = (e) => {
         const files = e.target.files;

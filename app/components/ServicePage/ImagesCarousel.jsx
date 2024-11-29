@@ -6,12 +6,11 @@ import ChevronRightIcon from '@heroicons/react/24/solid/ChevronRightIcon';
 import { useServiceContext } from '../../utils/context';
 
 
-export default function ImagesCarousel({ images }) {
-    if (images.length < 1) return;    
+export default function ImagesCarousel({ images }) {  
     const [index, setIndex] = useState(0);    
     const { state } = useServiceContext();
     const editMode = state.pageEditMode || state.profileEditMode;
-
+    if (images.length < 1) return;  
 
     const onNext = () => {
         if (index == images.length - 1) {
