@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import Rating from '../Rating';
 
-export default function ServiceProfileSection ({ service, editMode=false }) {
+
+export default function ServiceProfileSection ({ service }) {
+
     if (service === undefined) {
         return;
     }
@@ -16,8 +18,8 @@ export default function ServiceProfileSection ({ service, editMode=false }) {
                     <Image 
                         className="rounded-full"
                         src={`data:${mimeType};base64,${base64String}`} 
-                        width="120"
-                        height="100"
+                        width="110"
+                        height="110"
                         alt="profile pic" />
                 </div>
                 <h1 className="text-2xl text-center capitalize">{ serviceName }</h1>

@@ -6,7 +6,7 @@ export function InputField(props) {
     const { register, formState: { errors } } = useFormContext()
     
     return (
-        <div className="my-1 flex flex-col text-sm">
+        <div className="my-1 flex flex-col text-[15px]">
             <label className="text-zinc-700 font-medium md:mx-2">{ label }</label>
             <input 
                 className="border-2 border-gray-300 focus:border-gray-100 p-1 rounded-lg w-[270px] sm:w-[300px] my-1 sm:mx-2" 
@@ -23,7 +23,7 @@ export function TextArea(props) {
     const { label, name, type } = props
     const { register, formState: { errors } } = useFormContext()
     return (
-        <div className="my-1 flex flex-col text-sm">
+        <div className="my-1 flex flex-col text-[15px]">
             <label className="text-zinc-700 font-medium mx-2">{ label }</label>
             <textarea 
                 name={ name }
@@ -51,11 +51,11 @@ export function SelectField(props) {
         "Transport"
     ]
     return (
-        <div className="my-1 flex flex-col text-zinc-700 text-sm">
+        <div className="my-1 flex flex-col text-zinc-700 text-[15px]">
             <label className="font-medium my-1">{ label }</label>
             <select
                 name={ name }
-                className="border-2 border-gray-300 focus:border-gray-100 p-1 rounded-lg w-[300px] mx-2" 
+                className="border-2 border-gray-300 focus:border-gray-100 p-1 rounded-lg w-[270px] sm:w-[300px] mx-2" 
                 { ...register(name) }
             >
                 <option className="rounded-lg border-gray-400" value=""></option>

@@ -4,10 +4,14 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import ImageUploadModal from './ImageUploadModal';
 import ImagesCarousel from './ImagesCarousel';
+import { useServiceContext } from '../../utils/context';
 
-export default function DisplayImageInEdit({ images=[], deletedImages=[], setDeletedImages, src, uploadedImages=[], setUploadedImages }) {
+
+export default function DisplayImageInEdit({ images=[], src}) {
     const [showModal, setShowModal] = useState(false);
     const [imageSources, setImageSources] = useState([]);
+    const { state } = useServiceContext();
+    const { deletedImages, uploadedImages } = state;
     
     useEffect(() => {
         const sources = [];
@@ -39,7 +43,7 @@ export default function DisplayImageInEdit({ images=[], deletedImages=[], setDel
             >Upload Images <br/> that magnifies your service/business</h2>
             {
                 imageSources.length > 1 ? (
-                    <ImagesCarousel editMode={ true } images={ imageSources } />
+                    <ImagesCarousel images={ imageSources } />
                 ) : (
                     <Image 
                         src={ src } 
@@ -53,10 +57,7 @@ export default function DisplayImageInEdit({ images=[], deletedImages=[], setDel
             <ImageUploadModal 
                 showModal={ showModal } 
                 setShowModal={ setShowModal } 
-                setUploadedImages={ setUploadedImages }
                 fetchedImages={ images }
-                setDeletedImages={ setDeletedImages }
-                deletedImages={ deletedImages }
             />
         </>
     );

@@ -48,13 +48,15 @@ export async function POST (req) {
             mimeType,
             data: buffer
         });
-        const insertedCategory = await Category.create({
-            name: category.trim(),
-        });
+        let insertedCategory = await Category.findOne({ name: category.trim() });
+        if (!insertedCategory) {// if not created create a new category
+            insertedCategory = await Category.create({ name: category.trim() });
+        }
 
-        const sType = await ServiceType.create({
-            name: serviceType.trim()
-        });
+        let sType = await ServiceType.findOne({ name: serviceType.trim() });
+        if (!sType) { // if there isn't create a new service type
+            sType = await ServiceType.create({ name: serviceType.trim() });
+        }
 
         const service = await Service.create({
             user: user._id,

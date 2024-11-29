@@ -1,27 +1,21 @@
 'use client'
-import { useState } from 'react';
-import Image from 'next/image';
-import ImagesCarousel from './ImagesCarousel';
 import DisplayImage from './DisplayImage';
 import DisplayImageInEdit from './DisplayImageInEdit';
+import { useServiceContext } from '../../utils/context';
 
-export default function ServiceImage ({ profileImage, images=[], editMode=false, uploadedImages=[], setUploadedImages, deletedImages, setDeletedImages }) {
+
+export default function ServiceImage ({ profileImage, images=[] }) {
     const { mimeType, data } = profileImage;
     const base64String = btoa( new Uint8Array(data.data).reduce((chunk, byte) => chunk + String.fromCharCode(byte), ''));
     const src = `data:${mimeType};base64,${base64String}`;
+    const { state } = useServiceContext();
+
 
     return (
         <div className="h-full w-full mt-4">
             {
-                editMode ? (
-                    <DisplayImageInEdit 
-                        src={ src } 
-                        images={ images } 
-                        uploadedImages={ uploadedImages } 
-                        setUploadedImages={ setUploadedImages }
-                        deletedImages={ deletedImages }
-                        setDeletedImages={ setDeletedImages }
-                    />
+                state.pageEditMode ? (
+                    <DisplayImageInEdit src={ src } images={ images }/>
                 ) : (
                     <DisplayImage src={ src } images={ images } />
                 )

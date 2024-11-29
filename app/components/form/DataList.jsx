@@ -12,7 +12,7 @@ export default function DataList(props) {
         setOptions(optionsList.filter((option) => {
             return option.toLowerCase().indexOf(inputValue.toLowerCase()) != -1
         }))
-        setValue("catagory", inputValue)
+        setValue("category", inputValue)
     },[inputValue])
     const changeHandler = (e) => {
         const { value } = e.target
@@ -28,7 +28,7 @@ export default function DataList(props) {
     }
     const List = () => {
         return (
-            <ul className="absolute mt-[1px] border p-3 w-[300px] sm:w-[350px] min-h-[50px] overflow-auto bg-white">
+            <ul className="absolute mt-14 border p-3 w-[300px] sm:w-[350px] min-h-[50px] overflow-auto bg-white">
                 {
                     options.map((option, index) => {
                         return (
@@ -42,7 +42,7 @@ export default function DataList(props) {
         )
     }
     return (
-        <div className="my-1 flex flex-col text-sm">
+        <div className="my-1 flex flex-col text-[15px]">
             <label className="text-zinc-700 font-medium">{ label }</label>
             <input 
                 type="text" 

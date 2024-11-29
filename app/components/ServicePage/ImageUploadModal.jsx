@@ -1,12 +1,14 @@
 'use client'
 import { useState, useEffect } from 'react';
 import Modal from './Modal';
+import { useServiceContext } from '../../utils/context';
 
-export default function ImageUploadModal ({ showModal, setShowModal, setUploadedImages, fetchedImages, setDeletedImages, deletedImages }) {
+
+export default function ImageUploadModal ({ showModal, setShowModal, fetchedImages }) {
+    const { dispatch } = useServiceContext();
     const [imageSources, setImageSources] = useState([]);
     const [imageFiles, setImageFiles] = useState([]);
     const [buttonDisabled, setButtonDisabled] = useState(true);
-
 
     useEffect(() => {
         if (fetchedImages.length > 0) {
@@ -14,6 +16,7 @@ export default function ImageUploadModal ({ showModal, setShowModal, setUploaded
             setImageSources(images);
         }
     },[]);
+    
     const handleChange = (e) => {
         const files = e.target.files;
         const blobs = [];
@@ -28,7 +31,12 @@ export default function ImageUploadModal ({ showModal, setShowModal, setUploaded
     const removeImage = (index, id='') => {
         if (id !== '') {
             //allowes user to choose the image they want to delete from the server
-            setDeletedImages([...deletedImages, id]);
+            dispatch({
+                type: "AddDeletedImages",
+                payload: {
+                    id: id
+                }
+            });
             setButtonDisabled(false);
         }
         setImageSources(
@@ -39,7 +47,12 @@ export default function ImageUploadModal ({ showModal, setShowModal, setUploaded
         setShowModal(false);
     }
     const onSetChoosen = () => {
-        setUploadedImages(imageFiles);
+        dispatch({
+            type: "AddToBeUploadedImages",
+            payload: {
+                tobeUploadedImages: imageFiles,
+            }
+        });
         setShowModal(false);
     }
     const sourceGenerator = (image) => {

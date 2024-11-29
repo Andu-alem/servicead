@@ -3,10 +3,14 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import ChevronLeftIcon from '@heroicons/react/24/solid/ChevronLeftIcon';
 import ChevronRightIcon from '@heroicons/react/24/solid/ChevronRightIcon';
+import { useServiceContext } from '../../utils/context';
 
-export default function ImagesCarousel({ images, editMode=false }) {
-    const [index, setIndex] = useState(0);
-    if (images.length < 1) return;
+
+export default function ImagesCarousel({ images }) {
+    if (images.length < 1) return;    
+    const [index, setIndex] = useState(0);    
+    const { state } = useServiceContext();
+    const editMode = state.pageEditMode || state.profileEditMode;
 
 
     const onNext = () => {

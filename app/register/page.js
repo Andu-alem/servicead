@@ -4,14 +4,14 @@ import { useForm, FormProvider } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import { InputField, TextArea, SelectField } from './components/Input'
-import DataList from './components/DataList'
+import { InputField, TextArea, SelectField } from '../components/form/Input';
+import DataList from '../components/form/DataList';
 import { useState } from 'react'
 
 
 const schema = yup.object().shape({
     serviceName: yup.string().required("Provider/Comapany name is required"),
-    serviceType: yup.string().required("Please enter the area your service focuses on"),
+    serviceType: yup.string().required("Please select the one of the provided service types"),
     city: yup.string().required("City is required"),
     uniqueaddress: yup.string().required("Please provide your unique address/sefer name"),
     description: yup.string().required("Write a description about your service"),
@@ -62,9 +62,9 @@ export default function RegistrationForm() {
             <div className="mt-3">
                 <h1 className="text-zinc-700 text-sm font-medium">Fill out the form below to register your service to the system</h1>
             </div>
-            <div className="mt-2 sm:mt-4 mb-5 flex justify-center w-11/12 sm:w-9/12 md:w-7/12 lg:w-5/12 px-[2%] py-4 sm:py-7 border border-gray-300 bg-gray-50 shadow-md shadow-gray-200">
+            <div className="mt-2 sm:mt-4 mb-5 flex justify-center w-11/12 sm:w-9/12 md:w-7/12 lg:w-7/12 px-[2%] py-4 sm:py-7 border border-gray-300 bg-gray-50 shadow-md shadow-gray-200">
                 <form onSubmit={ methods.handleSubmit(submitHandler) }>
-                    <InputField label="Business Name" type="text" name="serviceName" />
+                    <InputField label="Service/Business Name" type="text" name="serviceName" />
                     <DataList label="Your service category" name="category" />
                     <SelectField label="Service/Business type" type="text" name="serviceType" />
                     <InputField label="Address - City" type="text" name="city" />

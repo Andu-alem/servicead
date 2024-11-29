@@ -1,24 +1,28 @@
 //import { Inter } from "next/font/google";
 import "./globals.css";
 import {Provider} from './provider';
+import { ServiceDataProvider } from './utils/context';
+
 
 export const metadata = {
-  title: "Services Advertisment",
+  title: "Services and Business Advertisment",
   description: "Advertise and make your service available",
 };
 
 export default function RootLayout({ children }) {
   return (
     <Provider>
-      <html>
-        <body>
-        <main>
-            <div className="">
-                {children}
-            </div>
-        </main>
-        </body>
-      </html>  
+      <ServiceDataProvider>
+        <html>
+          <body>
+          <main>
+              <div className="">
+                  {children}
+              </div>
+          </main>
+          </body>
+        </html>  
+      </ServiceDataProvider>
     </Provider>
   )
 }
