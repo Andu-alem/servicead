@@ -35,7 +35,7 @@ export default function MyServiceMain({ service, afterRegistration=false }) {
                 payload: true,
             });
         }
-        setImages(service.image);
+        setImages(service.images);
     },[])
     const uploadChanges = async () => {
         // make a post request to the server to upload the data
@@ -110,6 +110,7 @@ export default function MyServiceMain({ service, afterRegistration=false }) {
             <Header  
                 fromMyservice={ true } 
                 uploadChanges={ uploadChanges }
+                afterRegistration={ afterRegistration }
             />
             <ProfileUpdateForm show={ state.profileEditMode } serviceData={ service } />
             <div className="min-h-[94vh] mx-auto mt-14 bg-zinc-950 flex flex-col-reverse sm:flex-row sm:justify-evenly">

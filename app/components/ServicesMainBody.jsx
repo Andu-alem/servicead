@@ -9,6 +9,10 @@ export default function MainBody({ categories }) {
 
 
     const filterService = (filterBy, filterParam) => {
+        if (filterBy === 'all') {
+            setAllCategories(categories);
+            return;
+        }
         if (filterBy === 'category') {
             let filterdCategory = [];
             filterdCategory = categories.filter((category, index) => {

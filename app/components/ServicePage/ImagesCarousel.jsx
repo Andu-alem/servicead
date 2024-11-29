@@ -34,8 +34,8 @@ export default function ImagesCarousel({ images }) {
                 <Image className={ editMode ? "opacity-20":"opacity-100 rounded-lg" } src={ images[index] } fill={ true } alt="service-images" />
             </div>
             <div className="flex justify-between w-full absolute top-[33vh]">
-                <ChevronLeftIcon className="w-7 h-7 backdrop-blur-2xl text-white cursor-pointer" onClick={ onPrev }/>
-                <ChevronRightIcon className="w-7 h-7 backdrop-blur-2xl text-white cursor-pointer" onClick={ onNext }/>
+                <ChevronLeftIcon className="w-7 h-7 backdrop-blur-2xl border border-slate-300 text-white cursor-pointer" onClick={ onPrev }/>
+                <ChevronRightIcon className="w-7 h-7 backdrop-blur-2xl border border-slate-300 text-white cursor-pointer" onClick={ onNext }/>
             </div>
         </div>
     );
