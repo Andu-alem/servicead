@@ -26,7 +26,7 @@ export default function DisplayImage({ images=[], src }) {
                     <Image 
                         src={ src } 
                         className="w-full h-full rounded-lg opacity-100"
-                        width="170"
+                        width="150"
                         height="100" 
                         alt="profile pic"
                     />

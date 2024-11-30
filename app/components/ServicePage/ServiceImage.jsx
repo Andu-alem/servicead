@@ -15,7 +15,7 @@ export default function ServiceImage ({ profileImage, images=[] }) {
         <div className="h-full w-full mt-4">
             {
                 state.pageEditMode ? (
-                    <DisplayImageInEdit src={ src } images={ images }/>
+                    <DisplayImageInEdit src={ src } profileImageId={ profileImage._id } images={ images }/>
                 ) : (
                     <DisplayImage src={ src } images={ images } />
                 )

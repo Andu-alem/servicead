@@ -1,10 +1,11 @@
 'use client'
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Modal from './Modal';
 import { useServiceContext } from '../../utils/context';
 
 
-export default function ImageUploadModal ({ showModal, setShowModal, fetchedImages }) {
+export default function ImageUploadModal ({ showModal, setShowModal, fetchedImages, profileImageId }) {
     const { dispatch } = useServiceContext();
     const [imageSources, setImageSources] = useState([]);
     const [imageFiles, setImageFiles] = useState([]);
@@ -12,7 +13,7 @@ export default function ImageUploadModal ({ showModal, setShowModal, fetchedImag
 
     useEffect(() => {
         if (fetchedImages.length > 0) {
-            const images = Array.from(fetchedImages);
+            const images = Array.from(fetchedImages).filter((image) => image._id !== profileImageId );
             setImageSources(images);
         }
     },[fetchedImages]);
@@ -29,10 +30,10 @@ export default function ImageUploadModal ({ showModal, setShowModal, fetchedImag
         setButtonDisabled(false);
     }
     const removeImage = (index, id='') => {
-        if (id !== '') {
+        if (id != '') {
             //allowes user to choose the image they want to delete from the server
             dispatch({
-                type: "AddDeletedImages",
+                type: "AddDeletedImage",
                 payload: {
                     id: id
                 }
@@ -72,28 +73,32 @@ export default function ImageUploadModal ({ showModal, setShowModal, fetchedImag
                     onClick={ onClose }
                 >X</span>
             </div>
-            <div className="h-[60vh] py-2 px-10">
+            <div className="h-[72vh] py-2 px-10">
                 <div className="h-[90%] border border-zinc-500 flex justify-evenly flex-wrap overflow-auto">
                     {
                         imageSources.map((src, i) => (
                             <div key={ i } className="w-32 h-32 md:w-40 md:h-50 m-1">
                                 {
                                     src._id === undefined ? (
-                                        <>
-                                            <Image src={ src } key={ i } width="50" h="50" alt="img"/>
+                                        <div className="relative h-[200px]">
+                                            <div className="absolute w-full h-[150px]">
+                                                <Image src={ src } key={ i } fill={ true } alt="img"/>
+                                            </div>
                                             <span 
-                                                className="flex justify-center text-[13px] text-white bg-zinc-700 cursor-pointer"
+                                                className="absolute text-center w-full mt-[150px] text-[13px] text-white bg-zinc-700 cursor-pointer"
                                                 onClick={ () => removeImage(i) }
                                             >Remove</span>
-                                        </>
+                                        </div>
                                     ) : (
-                                        <>
-                                            <img className="" src={ sourceGenerator(src) } key={ i } alt="img"/>
+                                        <div className="relative h-[200px]">
+                                            <div className="absolute w-full h-[150px]">
+                                            <Image src={ sourceGenerator(src) } key={ i } fill={ true } alt="img"/>
+                                            </div>
                                             <span 
-                                                className="flex justify-center text-[13px] text-white bg-red-700 cursor-pointer"
+                                                className="absolute text-center w-full mt-[150px] text-[13px] text-white bg-red-700 cursor-pointer"
                                                 onClick={ () => removeImage(i, src._id) }
                                             >Delete</span>
-                                        </>
+                                        </div>
                                     )
                                 }
                             </div>
@@ -113,7 +118,7 @@ export default function ImageUploadModal ({ showModal, setShowModal, fetchedImag
                         onChange={ handleChange }
                     />
                     <button 
-                        className={`${ imageFiles.length < 1 ? 'opacity-50':'opacity-100' } bg-zinc-900 rounded-lg px-3 py-1 font-medium text-white cursor-pointer ml-3`}
+                        className={`${ !buttonDisabled < 1 ? 'opacity-50':'opacity-100' } bg-zinc-900 rounded-lg px-3 py-1 font-medium text-white cursor-pointer ml-3`}
                         onClick={ onSetChoosen }
                         disabled={ buttonDisabled }
                     >Set Changes</button>

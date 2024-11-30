@@ -3,7 +3,11 @@ import { useState, useEffect } from 'react';
 import StarIcon from '@heroicons/react/24/solid/StarIcon';
 
 export default function Rating() {
-    const rate = Math.ceil((Math.random() * 4)+1);
+    const [rate, setRate] = useState(0);
+    useEffect(() => {
+        const randomRate = Math.ceil((Math.random() * 4)+1);
+        setRate(randomRate);
+    },[])
         
     return (
         <div className="flex">

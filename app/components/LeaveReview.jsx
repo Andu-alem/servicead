@@ -7,7 +7,7 @@ import StarIcon from '@heroicons/react/24/solid/StarIcon';
 
 
 export default function LeaveReaview () {
-    const { session, data } = useSession();
+    const { status, data } = useSession();
     const [rate, setRate] = useState(0);
     const rateHandler = (index) => {
         setRate(index);
@@ -31,7 +31,7 @@ export default function LeaveReaview () {
             </div>
             <button
                 className="bg-blue-400 rounded-lg px-2 my-2 text-white font-bold text-[15px]"
-            >{ session === 'authenticated' ? "Leave A review" : "Sign-up to leave a review" }</button>
+            >{ status === 'authenticated' ? "Leave A review" : "Sign-up to leave a review" }</button>
         </div>
     );
 }

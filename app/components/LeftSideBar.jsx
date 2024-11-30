@@ -30,7 +30,7 @@ export default function LeftSideBar({ categories, filterService }) {
                             <option value="city">City</option>
                             <option value="category">Category</option>
                         </select>
-                        <span className="bg-blue-500 my-1 sm:my-0 cursor-pointer px-2 rounded-md text-white ml-2" onClick={ () => filterService('all') }>All</span>
+                        <span className="bg-blue-500 mt-1 sm:mt-0 cursor-pointer px-2 rounded-md text-white ml-2" onClick={ () => filterService('all') }>All</span>
                     </div>
                     <input 
                         type="search"

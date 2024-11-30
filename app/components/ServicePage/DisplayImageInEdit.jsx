@@ -7,7 +7,7 @@ import ImagesCarousel from './ImagesCarousel';
 import { useServiceContext } from '../../utils/context';
 
 
-export default function DisplayImageInEdit({ images=[], src}) {
+export default function DisplayImageInEdit({ images=[], src, profileImageId }) {
     const [showModal, setShowModal] = useState(false);
     const [imageSources, setImageSources] = useState([]);
     const { state } = useServiceContext();
@@ -58,6 +58,7 @@ export default function DisplayImageInEdit({ images=[], src}) {
                 showModal={ showModal } 
                 setShowModal={ setShowModal } 
                 fetchedImages={ images }
+                profileImageId={ profileImageId }
             />
         </>
     );

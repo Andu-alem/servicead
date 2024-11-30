@@ -77,8 +77,8 @@ export default function MyServiceMain({ service, afterRegistration=false }) {
                 }        
                 setSuccess({ image:true });  
             }
-            if (deleteImages.length > 0) {
-                const deletionResponse = await deleteImages(serviceId, deleteImages);
+            if (deletedImages.length > 0) {
+                const deletionResponse = await deleteImages(serviceId, deletedImages);
 
                 if (!deletionResponse.success) {
                     throw new Error("Error!!");
