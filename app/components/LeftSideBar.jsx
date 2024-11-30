@@ -19,7 +19,7 @@ export default function LeftSideBar({ categories, filterService }) {
     }
 
     return (
-        <div className="fixed text-wrap w-full text-[15px] bottom-0 sm:top-32 md:top-20 bg-gray-200 sm:bg-transparent sm:w-4/12 md:w-2/12 z-50">
+        <div className="fixed text-wrap w-[100vw] text-[15px] bottom-0 sm:top-32 md:top-20 bg-gray-200 sm:bg-transparent sm:w-4/12 md:w-2/12 z-50">
             <div className="flex sm:block">
                 <div className="text-sm hidden sm:block font-medium text-zinc-700 mb-2">Find services</div>
                 <div className="my-2 sm:my-1 mx-1 sm:mx-1 text-zinc-500 flex sm:block">
@@ -30,11 +30,11 @@ export default function LeftSideBar({ categories, filterService }) {
                             <option value="city">City</option>
                             <option value="category">Category</option>
                         </select>
-                        <span className="bg-blue-500 cursor-pointer px-2 rounded-md text-white ml-2" onClick={ () => filterService('all') }>All</span>
+                        <span className="bg-blue-500 my-1 sm:my-0 cursor-pointer px-2 rounded-md text-white ml-2" onClick={ () => filterService('all') }>All</span>
                     </div>
                     <input 
                         type="search"
-                        className="border border-sky-500 focus:border-0 rounded-lg px-3 py-1 w-[35vw] sm:w-[70%]" 
+                        className="border border-sky-500 h-7 mx-1 focus:border-0 rounded-lg px-3 py-1 w-[35vw] sm:w-[70%]" 
                         placeholder="Search"
                         onChange={ inputChange }
                     />
@@ -43,7 +43,7 @@ export default function LeftSideBar({ categories, filterService }) {
                     <h3 className="hidden sm:block">By radius</h3>
                     <input 
                         type="number" 
-                        className="border border-sky-500 my-2 sm:my-0 sm:mt-2 rounded-lg pl-2 sm:pl-4 w-[20vw] sm:w-[50%]"
+                        className="border border-sky-500 h-7 my-2 sm:my-0 sm:mt-2 rounded-lg pl-2 sm:pl-4 w-[20vw] sm:w-[50%]"
                         placeholder="2Km"/>
                 </div>
                 <div className="block sm:hidden my-2">

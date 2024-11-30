@@ -80,7 +80,7 @@ export default function ImageUploadModal ({ showModal, setShowModal, fetchedImag
                                 {
                                     src._id === undefined ? (
                                         <>
-                                            <img className="" src={ src } key={ i } alt="img"/>
+                                            <Image src={ src } key={ i } width="50" h="50" alt="img"/>
                                             <span 
                                                 className="flex justify-center text-[13px] text-white bg-zinc-700 cursor-pointer"
                                                 onClick={ () => removeImage(i) }

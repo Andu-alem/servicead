@@ -114,7 +114,7 @@ export default function MyServiceMain({ service, afterRegistration=false }) {
             />
             <ProfileUpdateForm show={ state.profileEditMode } serviceData={ service } />
             <div className="min-h-[94vh] mx-auto mt-14 bg-zinc-950 flex flex-col-reverse sm:flex-row sm:justify-evenly">
-                    <div className="sm:w-[45%] h-[80vh] mt-10">
+                    <div className="sm:w-[45%] h-[77vh] mt-10">
                         <ServiceImage 
                             profileImage={ profileImage } 
                             images={ images }

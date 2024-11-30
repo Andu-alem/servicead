@@ -4,6 +4,7 @@ import Rating from '../Rating';
 export default function ClientReview ({ profileImage }) {
     const { mimeType, data } = profileImage;
     const base64String = btoa( new Uint8Array(data.data).reduce((chunk, byte) => chunk + String.fromCharCode(byte), ''));
+    
     return (
         <div className="bg-gray-50 border border-zinc-300 text-[15px] rounded-lg p-3 my-2">
             <div className="flex mb-1"> 
