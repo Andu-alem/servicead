@@ -5,8 +5,8 @@ import { useSession } from "next-auth/react"
 
 const CardContainer = ({ services }) => {
     return (
-        <div className="w-[100%] md:w-[100%] card-color">
-            <div className="flex flex-nowrap overflow-x-auto w-full scrollbar-hide w-[98%] mx-auto">
+        <div className="w-[100%] md:w-[100%]">
+            <div className="flex flex-nowrap overflow-x-auto scrollbar-hide w-[98%] mx-auto">
             {
                 //loop through services[]
                 services.map((service, index) => {
@@ -22,7 +22,7 @@ const CardContainer = ({ services }) => {
 
 export default function ServicesList({ categories }) {
     return (
-        <div className="mb-12">
+        <div className="mb-12 mt-3">
             {
                 categories.length < 1 ?
                 (
@@ -31,8 +31,8 @@ export default function ServicesList({ categories }) {
                 categories.map((category, index) => {
                     return (
                         <div key={index}>
-                            <div className="border-b border-gray-100 py-1 px-1 sm:px-7">
-                                <h2 className="font-bold text-[17px] text-gray-500 capitalize">{`${category.name}s`}</h2>
+                            <div className="border-b border-gray-100 py-1 px-1 sm:px-4">
+                                <h2 className="font-semibold text-[15px] text-zinc-900 capitalize">{`${category.name}s`}</h2>
                             </div>
                             <CardContainer services={ category.services } />
                         </div>

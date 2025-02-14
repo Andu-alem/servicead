@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
         <html>
           <body>
           <main>
-              <div className="">
+              <div className="bg-white">
                   {children}
               </div>
           </main>

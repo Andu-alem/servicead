@@ -13,8 +13,8 @@ export default function NavigationBar() {
     const router = useRouter();
    
     return (
-        <div className="fixed w-full top-0 backdrop-blur-2xl shadow-b shadow-lg z-50">       
-            <div className="block sm:flex justify-around border-b-2 border-gray-300 shadow-sm py-2">
+        <div className="fixed w-full top-0 backdrop-blur-2xl shadow-b shadow-md z-50">       
+            <div className="block sm:flex justify-around py-2">
                 <div className="flex justify-between w-full">
                         <BrandLogo onClick={ () => router.refresh() } />
                         <div className="w-[1/12] sm:hidden hover:text-red-400 mt-[7px]">

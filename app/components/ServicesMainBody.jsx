@@ -43,14 +43,14 @@ export default function MainBody({ categories }) {
     }
 
     return (
-        <div className="w-[96%] mx-auto mt-20 sm:mt-[100px] lg:mt-[70px] sm:flex md:justify-evenly">
-            <div className="sm:w-4/12 md:w-2/12">
+        <div className="w-[97%] mx-auto mt-20 sm:mt-[100px] lg:mt-[70px] sm:flex md:justify-evenly">
+            <div className="sm:w-4/12 md:w-2/12 border-r border-zinc-100">
                 <LeftSideBar filterService={ filterService } categories={ categories } />
             </div>
             <div className="sm:w-7/12 md:w-8/12 mx-auto">
                 <ServicesList categories={ allCategories } />
             </div>
-            <div className="md:w-2/12">
+            <div className="md:w-2/12 border-l border-zinc-100">
                 <RightSideBar />
             </div>
         </div>

@@ -15,7 +15,7 @@ export default function Rating() {
                 Array.from(Array(5)).map((item, index) => {
                     return (
                         <div key={ index } className={(index+1) < rate ? "text-amber-500" : "text-zinc-300" }>
-                            <StarIcon className="w-4 h-4" />
+                            <StarIcon className="w-[20px] h-[20px]" />
                         </div>
                     )
                 })
