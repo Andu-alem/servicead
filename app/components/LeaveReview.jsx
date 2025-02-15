@@ -23,14 +23,14 @@ export default function LeaveReaview () {
                     Array.from(Array(5)).map((item, index) => {
                         return (
                             <span key={ index } className={ index <= rate ? "text-amber-500" : "text-zinc-400" } onClick={ () => rateHandler(index) }>
-                                <StarIcon className="w-4 h-4" />
+                                <StarIcon className="w-4 h-4 cursor-pointer" />
                             </span>
                         )
                         })
                 }
             </div>
             <button
-                className="bg-blue-400 rounded-lg px-2 my-2 text-white font-bold text-[15px]"
+                className="bg-blue-500 rounded-lg px-4 py-1 my-2 text-white font-bold text-[15px]"
             >{ status === 'authenticated' ? "Leave A review" : "Sign-up to leave a review" }</button>
         </div>
     );

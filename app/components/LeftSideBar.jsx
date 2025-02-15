@@ -23,9 +23,9 @@ export default function LeftSideBar({ categories, filterService }) {
             <div className="flex justify-evenly items-center sm:block">
                 <div className="text-sm hidden sm:block font-medium text-zinc-700 mb-2">Find services</div>
                 <div className="my-2 sm:my-1 mx-1 text-zinc-500 flex gap-7 items-center sm:block">
-                    <div className="my-1 flex flex-row-reverse items-center gap-2 w-[20vw] sm:block"> 
+                    <div className="my-1 flex flex-row-reverse items-center gap-2 sm:block"> 
                         <label htmlFor="selection" className="hidden sm:block">Search By - </label>
-                        <select id="selection" className="border border-zinc-200 sm:my-1 focus:border-0" onChange={ changeHandler } >
+                        <select id="selection" className="border border-zinc-200 sm:my-1 p-1 rounded-md focus:border-0" onChange={ changeHandler } >
                             <option value="name">Name</option>
                             <option value="city">City</option>
                             <option value="category">Category</option>
@@ -34,16 +34,14 @@ export default function LeftSideBar({ categories, filterService }) {
                     </div>
                     <input 
                         type="search"
-                        className="border border-sky-500 h-7 focus:border-0 rounded-lg px-3 py-1 w-[35vw] sm:w-[90%]" 
+                        className="border border-zinc-200 h-7 focus:border-0 rounded-lg px-3 py-1 w-[35vw] sm:w-[90%]" 
                         placeholder="Search"
                         onChange={ inputChange }
                     />
                 </div>
-                <div className="block sm:hidden my-2">
-                    <ChevronDoubleUpIcon 
-                        className="w-[40px] h-[30px] mr-2 font-bold text-sky-700 hover:text-zinc-500"
-                        onClick={ () => setOpen(!open) }/>
-                </div>
+                <ChevronDoubleUpIcon 
+                    className="block sm:hidden w-[40px] h-[30px] mr-2 font-bold text-sky-700 hover:text-zinc-500"
+                    onClick={ () => setOpen(!open) }/>
                 <div className="hidden sm:block mt-3">
                     <h3 className="text-zinc-900 font-medium">By category</h3>
                     <div className="hidden sm:block h-[40vh] text-zinc-500 overflow-auto scrollbar-hide">

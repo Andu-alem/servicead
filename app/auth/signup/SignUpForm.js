@@ -50,11 +50,11 @@ export default function SignUpForm() {
     return (
         <form onSubmit={ handleSubmit(onSubmit) }>
             <div className="flex flex-col jusitfy-start">
-                <label className="text-zinc-700 text-sm font-medium">
+                <label className="text-zinc-700 text-[17px] font-semibold">
                     User Name
                 </label>
                 <input 
-                    className="border-2 border-gray-300 focus:border-gray-100 p-1 rounded-lg w-[270px] sm:w-[300px] my-1 mx-1" 
+                    className="border border-gray-300 focus:border-gray-100 p-1 rounded-lg w-[270px] sm:w-[300px] my-1 mx-1" 
                     type="text"
                     name="username"
                     { ...register("username") }
@@ -62,11 +62,11 @@ export default function SignUpForm() {
                 { errors.userName && <p className="text-sm text-red-700">{ errors.userName.message }</p> }
             </div>
             <div className="flex flex-col jusitfy-start">
-                <label className="text-zinc-700 text-sm font-medium">
+                <label className="text-zinc-700 text-[17px] font-semibold">
                     Email
                 </label>
                 <input 
-                    className="border-2 border-gray-300 focus:border-gray-100 p-1 rounded-lg w-[270px] sm:w-[300px] my-1 mx-1" 
+                    className="border border-gray-300 focus:border-gray-100 p-1 rounded-lg w-[270px] sm:w-[300px] my-1 mx-1" 
                     type="email"
                     name="email"
                     { ...register("email") }
@@ -74,11 +74,11 @@ export default function SignUpForm() {
                 { errors.email && <p className="text-sm text-red-700">{ errors.email.message }</p> }
             </div>
             <div className="flex flex-col jusitfy-start">
-                <label className="text-zinc-700 text-sm font-medium">
+                <label className="text-zinc-700 text-[17px] font-semibold">
                     Password
                 </label>
                 <input 
-                    className="border-2 border-gray-300 focus:border-gray-100 p-1 rounded-lg w-[270px] sm:w-[300px] my-1 mx-1" 
+                    className="border border-gray-300 focus:border-gray-100 p-1 rounded-lg w-[270px] sm:w-[300px] my-1 mx-1" 
                     type="password"
                     name="password"
                     autoComplete="false"
@@ -87,11 +87,11 @@ export default function SignUpForm() {
                 { errors.password && <p className="text-sm text-red-700">{ errors.password.message }</p> }
             </div>
             <div className="flex flex-col jusitfy-start">
-                <label className="text-zinc-700 text-sm font-medium">
+                <label className="text-zinc-700 text-[17px] font-semibold">
                     Confirm
                 </label>
                 <input 
-                    className="border-2 border-gray-300 focus:border-gray-100 p-1 rounded-lg w-[270px] sm:w-[300px] my-1 mx-1" 
+                    className="border border-gray-300 focus:border-gray-100 p-1 rounded-lg w-[270px] sm:w-[300px] my-1 mx-1" 
                     type="password"
                     name="confirm"
                     autoComplete="false"
@@ -100,11 +100,11 @@ export default function SignUpForm() {
                 { errors.confirm && <p className="text-sm text-red-700">{ errors.confirm.message }</p> }
             </div>
             <div className="flex flex-col justify-center items-center mt-2">
-                <button className="flex mx-10 text-sm text-white bg-zinc-700 rounded-lg py-1 px-2 hover:opacity-75 hover:text-white" disabled={sending}>
+                <button className="flex mx-10 text-sm text-white bg-zinc-700 rounded-md py-1 px-2 hover:opacity-75 hover:text-white" disabled={sending}>
                     <div className={`${sending ? 'block':'hidden'} animate-spin mt-[3px] mx-1 border-gray-300 bg-white h-[10px] w-[10px] rounded-full border-4 border-t-sky-500 p-[5px]`}></div>
-                    SignUp
+                    SIGNUP
                 </button>
-                <p className="mt-2 font-medium">Have an account ? <Link className="text-sky-500" href="/auth/login" >Log in</Link> </p>
+                <p className="mt-2 font-semibold">Have an account ? <Link className="text-sky-500" href="/auth/login" >Log in</Link> </p>
             </div>
             <p className="font-medium text-red-400 mx-[10%]">{ signUpError }</p>
         </form>

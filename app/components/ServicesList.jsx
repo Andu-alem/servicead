@@ -1,6 +1,5 @@
 "use client"
 import Card from './Card'
-import { useSession } from "next-auth/react"
 
 
 const CardContainer = ({ services }) => {

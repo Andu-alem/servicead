@@ -21,7 +21,7 @@ export default function NavigationBar() {
                             <Bar3BottomRightIcon className="w-[50px] h-[40px] mr-1 text-zinc-500 font-bold cursor-pointer hover:text-sky-700" onClick={()=> setMenuToggle(!menuToggle)} />
                         </div>
                 </div>
-                <div className={`${menuToggle ? "block" : "hidden"} font-medium text-sm text-zinc-700 m-2 px-4 sm:block sm:flex justify-between cursor-pointer`}>
+                <div className={`${menuToggle ? "block" : "hidden"} font-medium text-sm text-zinc-700 m-2 px-4 sm:visible sm:flex justify-between cursor-pointer`}>
                     <div className="my-3 sm:my-0 mx-1 mr-1 sm:mr-2 hover:text-sky-500">
                         {
                             status === 'unauthenticated' || status === 'loading' ?

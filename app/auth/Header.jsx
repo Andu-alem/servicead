@@ -9,9 +9,11 @@ export default function Header() {
   
     return (
         <div className="flex justify-center">
-            <Link href="/">
-                <Image src="/logo.png" width={100} height={100} alt="logo" priority={ true } />
-                <span className="bg-gradient-to-r -mt-10 from-sky-400 via-blue-500 via-amber-500 to-amber-700 inline-block text-transparent bg-clip-text text-lg font-medium capitalize">ServiceAd</span>
+            <Link className="flex flex-col items-center" href="/">
+                <Image src="/logo.png" width={77} height={77} alt="logo" priority={ true } />
+                <h1 className="bg-gradient-to-r from-sky-700 via-sky-300 to-sky-100 inline-block text-transparent bg-clip-text underline -mt-3 text-xl font-semibold tracking-wide">
+                    Service<span className="text-zinc-500">Ad</span> 
+                </h1>
             </Link>
         </div>
     )

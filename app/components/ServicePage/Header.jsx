@@ -44,8 +44,8 @@ export default function Header({ uploadChanges=()=>{}, fromMyservice=false, afte
     }
   
     return (
-        <div className="fixed w-full top-0 backdrop-blur-2xl shadow-lg z-50">       
-            <div className="block sm:flex justify-around border-b-2 border-gray-300 shadow-sm py-2 shadow-b shadow-lg">
+        <div className="fixed w-full top-0 backdrop-blur-2xl z-50 border-b border-zinc-200 shadow-b shadow-sm">       
+            <div className="block sm:flex justify-around py-2">
                 <div className="flex justify-between w-full">
                     <div className="w-7/12">
                         <BrandLogo onClick={() => afterRegistration ? router.replace("/") : router.back()} />

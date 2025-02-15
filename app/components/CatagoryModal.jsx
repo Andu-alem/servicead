@@ -5,7 +5,7 @@ export default function CatagoryModal({ categories, filterService }) {
     }
 
     return (
-        <div className="fixed bottom-14 right-0 w-[70vw] h-[70vh] p-3 bg-white overflow-auto scrollbar-hide bg-gray-100 shadow-lg">
+        <div className="fixed bottom-14 right-0 w-[57vw] h-[70vh] p-3 overflow-auto scrollbar-hide bg-neutral-50 shadow-lg">
             <h1 className="text-zinc-900 font-semibold m-1">Categories</h1>
             <div className="">
                 {
