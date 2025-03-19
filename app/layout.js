@@ -15,11 +15,9 @@ export default function RootLayout({ children }) {
       <ServiceDataProvider>
         <html>
           <body>
-          <main>
-              <div className="bg-white">
-                  {children}
-              </div>
-          </main>
+            <main>
+                {children}
+            </main>
           </body>
         </html>  
       </ServiceDataProvider>

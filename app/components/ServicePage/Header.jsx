@@ -44,7 +44,7 @@ export default function Header({ uploadChanges=()=>{}, fromMyservice=false, afte
     }
   
     return (
-        <div className="fixed w-full top-0 backdrop-blur-2xl z-50 border-b border-zinc-200 shadow-b shadow-sm">       
+        <div className="fixed w-full top-0 backdrop-blur-3xl z-50 border-b border-zinc-200 shadow-b shadow-sm">       
             <div className="block sm:flex justify-around py-2">
                 <div className="flex justify-between w-full">
                     <div className="w-7/12">

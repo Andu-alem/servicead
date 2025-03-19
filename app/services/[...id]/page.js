@@ -17,11 +17,11 @@ export default async function Service({params}) {
     return (
         <div className="min-h-screen">
             <Header />
-            <div className="min-h-[94vh] w-full lg:w-[94%] mx-auto mt-14 flex flex-col-reverse sm:flex-row sm:justify-evenly">
-                    <div className="sm:w-[45%] h-[78vh] mt-10">
+            <div className="min-h-[94vh] w-full lg:w-[90%] mx-auto mt-14 flex flex-col-reverse sm:flex-row sm:justify-evenly">
+                    <div className="sm:w-1/2 h-[78vh] mt-10">
                         <ServiceImage profileImage={ profileImage } images={ images } />
                     </div>
-                    <div className="w-full sm:w-[55%] mt-[5vh]">
+                    <div className="w-full sm:w-1/2 mt-[5vh]">
                         <ServiceProfileSection service={ service } />
                     </div>
             </div>
